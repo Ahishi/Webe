@@ -1,0 +1,70 @@
+thead tr {
+    background-color: red;
+    color: white;
+}
+
+tr {
+    display: block;
+    height: 43px;
+}
+
+thead tr th {
+    font-size: 34px;
+    text-align: center;
+}
+
+caption {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid #aeaeae;
+    height: 42px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #aeaeae;
+    width: 100%;
+}
+
+td,th {
+    font-size: 1.5rem;
+    text-align: left;
+    padding: 0 18px;
+    height: inherit;
+}
+
+tbody tr td:nth-child(2){
+    width: 245px;
+}
+
+tbody tr td:nth-child(3){
+    width: 210px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td:nth-child(1), th:nth-child(1) {
+    width: 200px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-right-style: solid;
+    border-width: 1px;
+}
+
+p {
+    text-align: center;
+    width: 100%;
+    font-size: 2.3rem;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 1247px;
+}
+

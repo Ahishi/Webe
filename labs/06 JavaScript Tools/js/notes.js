@@ -1,25 +1,33 @@
-
-var notes = new Array();
+'use strict';
+const notes = [];
 
 function addItem() {
-	textbox = document.getElementById('item');
-	var itemText = textbox.value;
+	let textbox = document.getElementById('item');
+	const itemText = textbox.value;
 	textbox.value = '';
 	textbox.focus();
-	var newItem = {title: itemText, quantity: 1};
-	notes.push(newItem);
+
+	if(notes.some((e, i) => {
+		if(e.title === itemText){
+			notes.splice(i, 1, {title: itemText, quantity: e.quantity+1});
+			return true;
+		} else {
+			return false;
+		}
+	})){} else {
+		notes.push({title: itemText, quantity: 1});
+	}
+
 	displayList();
 }
 
 function displayList() {
-	var table = document.getElementById('list');
+	const table = document.getElementById('list');
 	table.innerHTML = '';
-	for (var i = 0; i<notes.length; i++) {
-		var node = undefined;
-		var note = notes[i];
-		var node = document.createElement('tr');
-		var html = '<td>'+note.title+'</td><td>'+note.quantity+'</td><td><a href="#" onClick="deleteIndex('+i+')">delete</td>';
-	    node.innerHTML = html;
+	for (let i = 0; i<notes.length; i++) {
+		const note = notes[i];
+		let node = document.createElement('tr');
+		node.innerHTML = '<td>' + note.title + '</td><td>' + note.quantity + '</td><td><a href="#" onClick="deleteIndex(' + i + ')">delete</td>';
 		table.appendChild(node);
 	}
 }
@@ -29,5 +37,5 @@ function deleteIndex(i) {
 	displayList();
 }
 
-button = document.getElementById('add');
+let button = document.getElementById('add');
 button.onclick = addItem;

@@ -1,5 +1,7 @@
 'use strict';
-const notes = [];
+let notes = [];
+
+loadList();
 
 function addItem() {
 	let textbox = document.getElementById('item');
@@ -18,6 +20,7 @@ function addItem() {
 		notes.push({title: itemText, quantity: 1});
 	}
 
+	saveList();
 	displayList();
 }
 
@@ -34,7 +37,20 @@ function displayList() {
 
 function deleteIndex(i) {
 	notes.splice(i, 1);
+	saveList();
 	displayList();
+}
+
+function loadList() {
+	console.log('loadList');
+	if (localStorage.notes) {
+		notes = JSON.parse(localStorage.notes);
+		displayList();
+	}
+}
+
+function saveList() {
+	localStorage.notes = JSON.stringify(notes);
 }
 
 let button = document.getElementById('add');

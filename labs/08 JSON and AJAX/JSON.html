@@ -5,18 +5,49 @@
   <title> JSON </title>
   <script>
 
-var fidoString = '{ "name": "Fido", "breed": "Mixed", "weight": 38 }';
-var fido = JSON.parse(fidoString);
-console.log("We have made a dog out of a string! " + fido.name);
+    let fidoString = '{ "name": "Fido", "breed": "Mixed", "weight": 38 }';
+    const fido = JSON.parse(fidoString);
+    console.log("We have made a dog out of a string! " + fido.name);
 
+    const newObject = {
+      name: { first: "John",
+              second: "Smoe" },
+      title: "a Professional John Smoe"
+    };
 
-var fido2 = {
-	name: "Fido",
-	breed: "Mixed",
-	weight: 38
-};
-var fidoString = JSON.stringify(fido2);
-console.log("We made a string from a dog! " + fidoString);
+    const fido2 = {
+      name: "Fido",
+      breed: "Mixed",
+      weight: 38
+    };
+
+    fidoString = JSON.stringify(fido2);
+    console.log("We made a string from a dog! " + fidoString);
+
+    function load() {
+      let div = document.createElement('div');
+      let p = document.createElement('p');
+      let objString = JSON.stringify(newObject);
+      p.textContent = objString;
+      div.appendChild(p);
+      document.body.appendChild(div);
+
+      let div2 = document.createElement('div');
+      let p2 = document.createElement('p');
+      objString = JSON.parse(objString);
+      p2.textContent = objString.name.first + " " + objString.name.second + " | " + objString.title;
+      div2.appendChild(p2);
+      document.body.appendChild(div2);
+
+      let div3 = document.createElement('div');
+      let p3 = document.createElement('p');
+      objString = JSON.stringify(objString.name);
+      p3.textContent = objString;
+      div3.appendChild(p3);
+      document.body.appendChild(div3);
+    }
+
+    window.onload = load;
 
   </script>
 </head>

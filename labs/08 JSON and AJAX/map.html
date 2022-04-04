@@ -6,24 +6,34 @@
   <script>
 	window.onload = init;
 	function init() {
-		var map = document.getElementById("map");
-		map.onmousemove = showCoords;
-		var mydiv = document.getElementById("mydiv");
-		mydiv.onclick = addtext;
+        const map = document.getElementById("map");
+        map.onmousemove = showCoords;
+        const mydiv = document.getElementById("mydiv");
+        mydiv.onclick = addtext;
+
+        let list = document.createElement("ul");
+        list.id = "u-list";
+        mydiv.append(list);
+
 	}
 	
 	function showCoords(eventObj) {
-		var coords = document.getElementById("coords");
-		var x = eventObj.clientX;
-		var y = eventObj.clientY;
-		coords.innerHTML = "Map coordinates: " + x + ", " + y;
+        const coords = document.getElementById("coords");
+        const x = eventObj.clientX;
+        const y = eventObj.clientY;
+        coords.innerHTML = "Map coordinates: " + x + ", " + y;
 	}
 
 	function addtext(){
 		if (document.createTextNode){
-			var textToAdd = " Div was clicked! "
-			var newNode = document.createTextNode(textToAdd);
-			document.getElementById("mydiv").appendChild(newNode);
+            const textToAdd = " Div was clicked! ";
+
+            for(let i = 1; i < 4; i++){
+                const newChild = document.createElement("li");
+                newChild.textContent = textToAdd;
+                document.getElementById("u-list").appendChild(newChild);
+            }
+
 		} else {
 			alert("Looks like you have an old browser!");
 		}

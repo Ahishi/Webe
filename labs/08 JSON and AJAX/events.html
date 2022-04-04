@@ -9,29 +9,44 @@
 	}
   </style>
   <script>
-window.onload = function() {
-	var div = document.getElementById("clickme");
-	if (div.addEventListener) {
-		div.addEventListener("click", handleClick, false);
-	} else if (div.attachEvent) {
-		div.attachEvent("click", handleClick);
-	}
-};
+  window.onload = function() {
+    const div = document.getElementById("clickme");
+    if (div.addEventListener) {
+          div.addEventListener("click", handleClick, false);
+      } else if (div.attachEvent) {
+          div.attachEvent("click", handleClick);
+      }
+  };
 
-function handleClick(e) {
-	var evt = e || window.event;
-	var target;
-	if (evt.target) {
-		target = evt.target;
-	} else {
-		target = evt.srcElement;
-	}
-	alert("You clicked on " + target.id);
-}
+  window.addEventListener("mouseover", function(e) {
+    console.log(e.target.id);
+  })
+
+  function hover(div){
+    div.style.color = "red";
+  }
+
+  function handleClick(e) {
+    const evt = e || window.event;
+    let target;
+    if (evt.target) {
+          target = evt.target;
+      } else {
+          target = evt.srcElement;
+      }
+      alert("You clicked on " + target.id);
+  }
 
   </script>
 </head>
-<body>
+<body id="body">
+  <div onmouseover="hover(this)" id="div">
+    <p id="text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed bibendum vestibulum pretium. Morbi imperdiet arcu sit amet libero dictum interdum. <br>
+      Maecenas ut sapien ut orci aliquam rhoncus nec vitae lorem. Curabitur ac semper erat. Aliquam vestibulum sem nec lacus tempor, in tempor orci sodales. Curabitur et dictum mi. <br>
+      Mauris nec ante felis. Duis id mattis neque. Etiam id lectus erat. In nec libero cursus, consectetur metus interdum, efficitur nunc. Pellentesque finibus sapien et justo auctor euismod. <br>
+    </p>
+  </div>
 <span id="clickme">Click me!</span>
 </body>
 </html>

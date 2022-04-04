@@ -6,59 +6,77 @@
 </head>
 
 <body>
-  <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
-    Make a request
-  </span>
+
+    <form id="form">
+        <label for="URL">URL:</label>
+        <input type="text" id="URL" name="URL"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+        Make a request
+    </span>
 
 
   <script type="text/javascript">
-  (function() {
-    var httpRequest;
-    var testUrl = 'data/story.json';
-    // Use Github Gist when no web server is available
-    // var testUrl = 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json';
-    document.getElementById("ajaxButton").onclick = function() { makeRequest(testUrl); };
+      (function() {
+          let httpRequest;
+          const testUrl = 'data/story.json';
+          // Use Github Gist when no web server is available
+          // var testUrl = 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json';
+          document.getElementById("ajaxButton").onclick = function() { makeRequest(testUrl); };
+          document.getElementById("form").onsubmit = function(e)
+          {
+              let success = makeRequest(e.target.elements.URL.value);
 
-    function makeRequest(url) {
-      if (window.XMLHttpRequest) { // Mozilla, Safari, ...
-        httpRequest = new XMLHttpRequest();
-      } else if (window.ActiveXObject) { // IE
-        try {
-          httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } 
-        catch (e) {
-          try {
-            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-          } 
-          catch (e) {}
-        }
-      }
+          };
 
-      if (!httpRequest) {
-        alert('Giving up :( Cannot create an XMLHTTP instance');
-        return false;
-      }
+          function makeRequest(url) {
+              if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+                  httpRequest = new XMLHttpRequest();
+              } else if (window.ActiveXObject) { // IE
+                  try {
+                      httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+                  }
+                  catch (e) {
+                      try {
+                          httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                      }
+                      catch (e) {}
+                  }
+              }
 
-      // set a callback function for when the httpRequest completes
-      httpRequest.onreadystatechange = alertContents;
+              if (!httpRequest) {
+                  alert('Giving up :( Cannot create an XMLHTTP instance');
+                  return false;
+              }
 
-      // now do the actual AJAX request
-      httpRequest.open('GET', url);
-      httpRequest.send();
-    }
+              // set a callback function for when the httpRequest completes
+              httpRequest.onreadystatechange = isFOF;
+              httpRequest.onreadystatechange = alertContents;
 
-    // the callback
-    // this will be run when the request completes (see above)
-    function alertContents() {
-      if (httpRequest.readyState === 4) {
-        if (httpRequest.status === 200) {
-          alert(httpRequest.responseText);
-        } else {
-          alert('There was a problem with the request.');
-        }
-      }
-    }
-  })();
+              // now do the actual AJAX request
+              httpRequest.open('GET', url);
+              httpRequest.send();
+          }
+
+          function isFOF(){
+              if (httpRequest.status === 404){
+                  alert('Site is DOWN!');
+              }
+          }
+
+          // the callback
+          // this will be run when the request completes (see above)
+          function alertContents() {
+              if (httpRequest.readyState === 4) {
+                  if (httpRequest.status === 200) {
+                      alert(httpRequest.responseText);
+                  } else {
+                      alert('There was a problem with the request.');
+                  }
+              }
+          }
+      })();
   </script>
 
 </body>

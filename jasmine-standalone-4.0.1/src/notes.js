@@ -3,12 +3,17 @@ let notes = (function() {
 
     return {
         add: function(note) {
-            if(note !== null && note.trim().length > 0){
-                notesList.push(note);
-                return true;
+            if(note){
+                if(note.trim().length > 0){
+                    notesList.push(note);
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
+
         },
         remove: function(index) {
             if(index > 0 && index < notesList.length){
@@ -34,17 +39,29 @@ let notes = (function() {
             return notesReturn;
         },
         find: function(string) {
-            let processNotes = notes.list();
-            if (processNotes.some(e => e.note !== string)) {
-                for(let i = 0; i < notesList.length; i++){
-                    if(!notesList[i].contains(string)){
-                        notes.remove(i);
-                    }
+            let processNotes = [];
+            if(notesList.some((e, index) =>
+            {
+                if(e.includes(string)){
+                    processNotes.push(
+                        {
+                            note: notesList[index],
+                            timestamp: new Date().getTime(),
+                        })
+                    return true;
                 }
+                else {
+                    return false;
+                }
+
+            } )){}
+
+            if(processNotes.length > 0){
                 return processNotes;
             } else {
                 return false;
             }
+
         },
         clear: function() {
             notesList = [];

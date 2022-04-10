@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app-3">
+    <span v-if="seen">Now you see me</span>
+    <button @click="vaihda">Näytä/Piilota</button>
+</div>
+</body>
+</html>
+
+<script>
+    const app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true,
+        },
+        methods: {
+            vaihda: function () {
+                this.seen = !this.seen;
+            }
+        }
+    });
+</script>

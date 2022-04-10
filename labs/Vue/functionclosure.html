@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ number }}</p>
+    <div>
+        <button v-for="button in buttons" @click="click(button.index)">
+            {{button.message}}
+        </button>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            number: 0,
+            buttons: [
+                {
+                    index: -1,
+                    message: '-'
+                },
+                {
+                    index: 0,
+                    message: '0'
+                },
+                {
+                    index: 1,
+                    message: '+'
+                }
+            ]
+        },
+
+        methods: {
+          click(index) {
+              if(index !== 0){
+                  this.number += index;
+              } else
+                  this.number = 0;
+          }
+        }
+    })
+</script>

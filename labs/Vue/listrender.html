@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model="input" placeholder="message">
+    <button @click="addItem">Add</button>
+    <button @click="deleteFirstItem">Delete First</button>
+    <div>
+        <ul>
+            <li v-for="(item, index) in items">
+                {{item.message}}
+                <button @click="deleteItem(index)">Delete</button>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            input: '',
+            items: []
+        },
+
+        methods: {
+
+            deleteItem: function(index) {
+                this.items.splice(index, 1)
+            },
+
+            addItem: function () {
+                this.items.push({message: this.input});
+                this.input = ''
+            },
+
+            deleteFirstItem: function () {
+                this.items.splice(0, 1)
+            }
+        }
+    })
+</script>

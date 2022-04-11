@@ -1,0 +1,40 @@
+[
+    {
+                "Date":"2022-02-11T22:00:00.000Z",
+                "Name":"taiteilijat: Claudia Reyes",
+                "Type":"Musiikki",
+                "Time":"19:00:00",
+                "Location_place_name":"Helsingin Musiikkitalo"
+            },
+            {
+                "Date":"2022-02-17T22:00:00.000Z",
+                "Name":"Maustetytot","Type":"Musiikki",
+                "Time":"19:00:00",
+                "Location_place_name":"Tavastia"
+            },
+            {
+                "Date":"2022-03-30T21:00:00.000Z",
+                "Name":"UMO feat. Aili Ikonen & Kyosti Makimattila",
+                "Type":"Musiikki","Time":"19:00:00",
+                "Location_place_name":"Savoy"
+            },
+            {
+                "Date":"2022-03-30T21:00:00.000Z",
+                "Name":"Orga-non urkumatinea",
+                "Type":"Musiikki","Time":"12:00:00",
+                "Location_place_name":"Helsingin Musiikkitalo"
+            } ,
+            {
+                "Date":"2022-04-01T21:00:00.000Z",
+                "Name":"Nino Rota & Ennio Morricone Movie Themes",
+                "Type":"Musiikki","Time":"19:00:00",
+                "Location_place_name":"Helsingin Musiikkitalo"
+            } ,
+            {
+                "Date":"2022-04-11T21:00:00.000Z",
+                "Name":"Reijo Taipale",
+                "Type":"Musiikki",
+                "Time":"19: 00:00",
+                "Location_place_name":"Savoy"
+            }
+]
